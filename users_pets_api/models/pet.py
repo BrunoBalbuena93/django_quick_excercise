@@ -72,3 +72,10 @@ class Pet(models.Model):
         app_label = 'users_pets_api'
         db_table = 'pet'
         ordering = ['date_of_birth', 'deceased_date', 'breed', 'gender', 'weight', 'id']
+        constraints = [
+            models.CheckConstraint(
+                check=(models.Q(deceased_date__isnull = True)) |
+                      (models.Q(deceased_date__gt = models.F('date_of_birth'))),
+                name='deceased_date_gt_date_of_birth'
+            )
+        ]

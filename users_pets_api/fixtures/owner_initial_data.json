@@ -1,0 +1,90 @@
+[
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 1,
+      "person_id": 1,
+      "pet_id": 10
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 2,
+      "person_id": 1,
+      "pet_id": 9
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 3,
+      "person_id": 1,
+      "pet_id": 8
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 4,
+      "person_id": 1,
+      "pet_id": 7
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 5,
+      "person_id": 2,
+      "pet_id": 10
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 6,
+      "person_id": 2,
+      "pet_id": 9
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 7,
+      "person_id": 2,
+      "pet_id": 6
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 8,
+      "person_id": 3,
+      "pet_id": 10
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 9,
+      "person_id": 3,
+      "pet_id": 9
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 10,
+      "person_id": 3,
+      "pet_id": 5
+    }
+  },
+  {
+    "model": "users_pets_api.owner",
+    "fields": {
+      "id": 11,
+      "person_id": 4,
+      "pet_id": 4
+    }
+  }
+]

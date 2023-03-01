@@ -1,0 +1,112 @@
+[
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 1,
+      "date_of_birth": "2006-01-01 00:40:46Z",
+      "gender": "M",
+      "weight": 24.86707,
+      "breed": "American Cocker",
+      "deceased_date": "2018-03-02 18:06:32Z"
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 2,
+      "date_of_birth": "2016-02-03 16:50:31Z",
+      "gender": "M",
+      "weight": 86.96286,
+      "breed": "American Cocker",
+      "deceased_date": null
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 3,
+      "date_of_birth": "2010-05-01 19:20:12Z",
+      "gender": "F",
+      "weight": 52.30109,
+      "breed": "Chihuahua",
+      "deceased_date": null
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 4,
+      "date_of_birth": "2007-02-15 08:34:49Z",
+      "gender": "F",
+      "weight": 33.75562,
+      "breed": "Chihuahua",
+      "deceased_date": "2018-03-02 17:30:51Z"
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 5,
+      "date_of_birth": "2008-01-17 07:47:59Z",
+      "gender": "M",
+      "weight": 98.41545,
+      "breed": "Labrador",
+      "deceased_date": "2018-03-02 23:44:04Z"
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 6,
+      "date_of_birth": "2009-07-18 03:24:43Z",
+      "gender": "M",
+      "weight": 27.48365,
+      "breed": "Labrador",
+      "deceased_date": "2018-03-02 18:30:23Z"
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 7,
+      "date_of_birth": "2009-09-19 07:50:13Z",
+      "gender": "F",
+      "weight": 109.24104,
+      "breed": "Pomeranian",
+      "deceased_date": null
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 8,
+      "date_of_birth": "2013-12-20 23:29:09Z",
+      "gender": "F",
+      "weight": 8.44432,
+      "breed": "Pomeranian",
+      "deceased_date": null
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 9,
+      "date_of_birth": "2015-05-30 11:31:17Z",
+      "gender": "M",
+      "weight": 48.55521,
+      "breed": "Corgi",
+      "deceased_date": null
+    }
+  },
+  {
+    "model": "users_pets_api.pet",
+    "fields": {
+      "id": 10,
+      "date_of_birth": "2018-10-15 20:39:56Z",
+      "gender": "M",
+      "weight": 15.25529,
+      "breed": "Corgi",
+      "deceased_date": null
+    }
+  }
+]
