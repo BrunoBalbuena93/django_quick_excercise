@@ -25,6 +25,14 @@ CACHES = {
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# Note:
+#   This is an example of how multiple applications could go to multiple databases. Since this is a simple example
+#   when the default django user's entity / model / table is used also as a foreign key for part of the exercise all
+#   the routers go to the same database (users_pets_api) and we don't get any benefit from separating data in multiple
+#   routers since we would lose the availability of foreign keys reference to the user model risking the integrity of
+#   data of the pet owners entity information. I just leave it here as an example of how we can use routers to separate
+#   data from multiple applications
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

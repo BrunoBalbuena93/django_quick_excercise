@@ -5,7 +5,7 @@ class SessionsProviderRouter:
 
         if model._meta.app_label == 'sessions':
 
-            return 'project_admin_auth_users_db'
+            return 'users_pets_api'
 
         return None
 
@@ -13,7 +13,7 @@ class SessionsProviderRouter:
 
         if model._meta.app_label == 'sessions':
 
-            return 'project_admin_auth_users_db'
+            return 'users_pets_api'
 
         return None
 
@@ -30,6 +30,6 @@ class SessionsProviderRouter:
 
         if app_label == 'sessions':
 
-            return db == 'project_admin_auth_users_db'
+            return db == 'users_pets_api'
 
         return None
