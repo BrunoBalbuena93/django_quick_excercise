@@ -64,7 +64,7 @@ class Pet(models.Model):
     )
     owners = models.ManyToManyField(
         Person,
-        related_name='owners',
+        related_name='pets',
         through='Owner'
     )
 
