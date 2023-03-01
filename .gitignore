@@ -11,6 +11,12 @@ media
 
 # If you are using PyCharm # 
 # User-specific stuff
+.idea/.gitignore
+.idea/django_quick_excercise.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/vcs.xml
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
