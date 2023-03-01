@@ -59,6 +59,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_app.wsgi.application'
 
 DATABASE_ROUTERS = [
+    'django_app.routers.AdminProviderRouter',
+    'django_app.routers.AuthProviderRouter',
+    'django_app.routers.ContentTypesProviderRouter',
+    'django_app.routers.SessionsProviderRouter'
 ]
 
 # Password validation

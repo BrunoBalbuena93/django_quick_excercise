@@ -78,6 +78,9 @@ wheels/
 pip-log.txt 
 pip-delete-this-directory.txt 
 
+# sqlite3 database files
+django_app/db/*.sqlite3
+
 # Unit test / coverage reports 
 htmlcov/ 
 .tox/ 

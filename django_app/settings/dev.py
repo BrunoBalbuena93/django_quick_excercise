@@ -28,18 +28,14 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'default.db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db', 'default.db.sqlite3'),
     },
-    'project_admin_db': {
+    'project_admin_auth_users_db': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'project.admin.db.sqlite3'),
-    },
-    'auth_users_db': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'auth.users.db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db', 'project.admin.db.sqlite3'),
     },
     'users_pets_api': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'users.pets.api.db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db', 'users.pets.api.db.sqlite3'),
     }
 }
