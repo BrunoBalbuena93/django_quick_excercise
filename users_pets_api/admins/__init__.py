@@ -1,3 +1,3 @@
-from .owner import OwnerAdmin
-from .person import PersonAdmin
-from .pet import PetAdmin
+from .owner_admin import OwnerAdmin
+from .person_admin import PersonAdmin
+from .pet_admin import PetAdmin
