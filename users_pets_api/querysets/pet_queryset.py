@@ -10,3 +10,7 @@ class PetQuerySet (models.query.QuerySet):
     def get_by_id (self, id):
 
         return self.filter(id=id)
+
+    def get_by_person_id (self, id):
+
+        return self.filter(owners=id)

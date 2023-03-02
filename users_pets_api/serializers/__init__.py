@@ -3,3 +3,4 @@ from .hyperlinked_pet_serializer import HyperlinkedPetSerializer
 from .owner_serializer import OwnerSerializer
 from .person_serializer import PersonSerializer
 from .pet_serializer import PetSerializer
+from .pet_owner_serializer import PetOwnerSerializer

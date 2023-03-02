@@ -16,3 +16,7 @@ class PetManager (models.Manager):
     def get_by_id (self, id):
 
         return self.get_query_set ().get_by_id (id)
+
+    def get_by_person_id (self, id):
+
+        return self.get_query_set ().get_by_person_id (id)

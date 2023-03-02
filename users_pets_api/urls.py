@@ -5,6 +5,7 @@ from users_pets_api.views import HyperlinkedPetAPIView
 from users_pets_api.views import OwnerAPIView
 from users_pets_api.views import PersonAPIView
 from users_pets_api.views import PetAPIView
+from users_pets_api.views import PetOwnerAPIView
 
 urlpatterns = []
 
@@ -22,6 +23,16 @@ users_pets_api_endpoint_views = [
         'owner/<int:person_id>/<int:pet_id>/',
         OwnerAPIView.as_view(),
         name="owner-resource-by-person-id-and-pet-id-with-slash"
+    ),
+    path(
+        'owner/<int:person_id>',
+        PetOwnerAPIView.as_view(),
+        name="owner-resource-by-person-id-without-slash"
+    ),
+    path(
+        'owner/<int:person_id>/',
+        PetOwnerAPIView.as_view(),
+        name="owner-resource-by-person-id-with-slash"
     ),
     path(
         'owner/',
