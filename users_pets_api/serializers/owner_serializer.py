@@ -1,6 +1,9 @@
 from rest_framework import serializers as serializers
+from rest_framework.validators import UniqueTogetherValidator
 
 from users_pets_api.models import Owner
+from users_pets_api.models import Person
+from users_pets_api.models import Pet
 
 from .person_serializer import PersonSerializer
 from .pet_serializer import PetSerializer
@@ -8,8 +11,15 @@ from .pet_serializer import PetSerializer
 
 class OwnerSerializer(serializers.ModelSerializer):
 
-    person = PersonSerializer(read_only=False, many=False)
-    pet = PetSerializer(read_only=False, many=False)
+    person = PersonSerializer(read_only=True, many=False)
+    pet = PetSerializer(read_only=True, many=False)
+
+    person_id = serializers.PrimaryKeyRelatedField(
+        queryset=Person.people.get_all(), many=False, read_only=False, source='person', write_only=True
+    )
+    pet_id = serializers.PrimaryKeyRelatedField(
+        queryset=Pet.pets.get_all(), many=False, read_only=False, source='pet', write_only=True
+    )
 
     class Meta:
 
@@ -18,14 +28,25 @@ class OwnerSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'person',
+            'person_id',
+            'pet',
+            'pet_id'
+        ]
+
+        read_only_fields = [
+            'id',
+            'person',
             'pet'
         ]
 
-        # Note:
-        #   - This is an example of read only fields. Depending on the use case they can be writable fields. I just
-        #     wanted to show an example of read_only_fields here
-        read_only_fields = [
-            'id',
-            'owner',
-            'pet'
+        extra_kwargs = {
+            'person_id': {'write_only': True},
+            'pet_id': {'write_only': True}
+        }
+
+        validators = [
+            UniqueTogetherValidator(
+                queryset=Owner.owners.all(),
+                fields=['person_id', 'pet_id']
+            )
         ]

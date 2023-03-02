@@ -21,7 +21,7 @@ class OwnerAPIView(APIView):
 #    required_scopes        = ['']
 
     @method_decorator(csrf_exempt)
-    def get (self, request, person_id = None, pet_id = None, *args, **kwargs):
+    def get(self, request, person_id = None, pet_id = None, *args, **kwargs):
 
         owner_data = Owner.owners.get_all()
 
@@ -31,9 +31,138 @@ class OwnerAPIView(APIView):
         if not(pet_id is None):
             owner_data = owner_data.get_by_pet_id(pet_id)
 
+        if owner_data.exists():
+
+            owner_serialized_data = OwnerSerializer(
+                owner_data,
+                many=True,
+                context={"request": request}
+            )
+            return Response(owner_serialized_data.data)
+
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @method_decorator(csrf_exempt)
+    def post(self, request, *args, **kwargs):
+
+        owner_request_data = request.data
+
         owner_serialized_data = OwnerSerializer(
-            owner_data,
-            many=True,
-            context={"request": request}
+            data=owner_request_data,
+            context={"request" : request}
         )
-        return Response(owner_serialized_data.data)
+
+        if owner_serialized_data.is_valid ():
+
+            owner_serialized_data.save()
+            return Response (
+                owner_serialized_data.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response (
+            owner_serialized_data.errors,
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def put(self, request, person_id = None, pet_id = None, *args, **kwargs):
+
+        owner_request_data = request.data
+
+        if not(person_id is None) and not(pet_id is None):
+
+            owner_data = Owner.owners.get_by_person_id_and_pet_id(person_id, pet_id)
+
+            if owner_data.exists():
+
+                owner_serialized_data = OwnerSerializer(
+                    owner_data.get(),
+                    data=owner_request_data,
+                    context={"request" : request}
+                )
+
+                if owner_serialized_data.is_valid ():
+
+                    owner_serialized_data.save()
+                    return Response (owner_serialized_data.data)
+
+                return Response(
+                    owner_serialized_data.errors,
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'An update request must include the person_id and pet_id parameters as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def patch(self, request, person_id = None, pet_id = None, *args, **kwargs):
+
+        owner_request_data = request.data
+
+        if not(person_id is None) and not(pet_id is None):
+
+            owner_data = Owner.owners.get_by_person_id_and_pet_id(person_id, pet_id)
+
+            if owner_data.exists():
+
+                owner_data = owner_data.get()
+
+                # Note:
+                #   - I could have done this in the update method of the serializer. I just wanted to implement it here
+                #     to show a difference between the patch and put requests
+
+                if not ('person_id' in owner_request_data):
+                    owner_request_data['person_id'] = owner_data.person.id
+
+                if not ('pet_id' in owner_request_data):
+                    owner_request_data['pet_id'] = owner_data.pet.id
+
+                owner_serialized_data = OwnerSerializer(
+                    owner_data,
+                    data=owner_request_data,
+                    context={"request" : request}
+                )
+
+                if owner_serialized_data.is_valid ():
+
+                    owner_serialized_data.save()
+                    return Response (owner_serialized_data.data)
+
+                return Response(
+                    owner_serialized_data.errors,
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'An update request must include the person_id and pet_id parameters as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def delete(self, request, person_id = None, pet_id = None, *args, **kwargs):
+
+        owner_request_data = request.data
+
+        if not(person_id is None) and not(pet_id is None):
+
+            owner_data = Owner.owners.get_by_person_id_and_pet_id(person_id, pet_id)
+
+            if owner_data.exists():
+                owner_data.delete()
+                return Response (status=status.HTTP_204_NO_CONTENT)
+
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'A delete request must include the person_id and pet_id parameters as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )

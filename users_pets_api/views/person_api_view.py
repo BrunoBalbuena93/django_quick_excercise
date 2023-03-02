@@ -132,8 +132,6 @@ class PersonAPIView (APIView):
                 if not ('city' in person_request_data):
                     person_request_data['city'] = person_data.city
 
-                print (person_request_data)
-
                 person_serialized_data = PersonSerializer(
                     person_data,
                     data=person_request_data,

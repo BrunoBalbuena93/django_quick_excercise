@@ -28,9 +28,14 @@ class PetOwnerAPIView(APIView):
         if not(person_id is None):
             pet_owner_data = pet_owner_data.get_by_person_id(person_id)
 
-        pet_owner_serialized_data = PetOwnerSerializer(
-            pet_owner_data,
-            many=True,
-            context={"request": request}
-        )
-        return Response(pet_owner_serialized_data.data)
+        if pet_owner_data.exists():
+
+            pet_owner_serialized_data = PetOwnerSerializer(
+                pet_owner_data,
+                many=True,
+                context={"request": request}
+            )
+            return Response(pet_owner_serialized_data.data)
+
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
