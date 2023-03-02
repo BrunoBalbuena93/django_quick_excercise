@@ -20,9 +20,9 @@ python manage.py createsuperuser --database "users_pets_api"
 python manage.py shell
 
   from users_pets_api.models import Person, Pet, Owner
-  Pet.objects.filter (id = 1).get ().owners.all ()
-  Pet.objects.filter (id = 10).get ().owners.all ()
-  Person.objects.filter (id = 1).get ().pets.all ()
-  Person.objects.filter (id = 10).get ().pets.all ()
+  Pet.pets.filter (id = 1).get ().owners.all ()
+  Pet.pets.filter (id = 10).get ().owners.all ()
+  Person.people.filter (id = 1).get ().pets.all ()
+  Person.people.filter (id = 10).get ().pets.all ()
 
 python manage.py runserver localhost:42800

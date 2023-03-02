@@ -3,6 +3,8 @@ from django.db import models as models
 from .person import Person
 from .pet import Pet
 
+from users_pets_api.managers import OwnerManager
+
 
 class Owner(models.Model):
 
@@ -22,6 +24,8 @@ class Owner(models.Model):
         blank=False,
         null=False
     )
+
+    owners = OwnerManager()
 
     class Meta:
         app_label = 'users_pets_api'

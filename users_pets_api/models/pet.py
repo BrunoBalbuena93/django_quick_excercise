@@ -1,6 +1,8 @@
 from django.db import models as models
 from django.core.validators import MinValueValidator
 
+from users_pets_api.managers import PetManager
+
 from .person import Person
 
 # Notes:
@@ -67,6 +69,8 @@ class Pet(models.Model):
         related_name='pets',
         through='Owner'
     )
+
+    pets = PetManager()
 
     class Meta:
         app_label = 'users_pets_api'

@@ -1,7 +1,9 @@
 from django.db import models as models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 
 from phonenumber_field.modelfields import PhoneNumberField
+
+from users_pets_api.managers import PersonManager
 
 # Notes:
 #  - city could also be a model or table if more customization and associated data is needed, with a "one-to-many
@@ -30,6 +32,9 @@ class Person(AbstractUser):
         null=False,
         unique=False
     )
+
+    objects = UserManager()
+    people = PersonManager()
 
     class Meta:
         app_label = 'users_pets_api'
