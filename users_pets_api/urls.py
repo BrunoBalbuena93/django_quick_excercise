@@ -12,6 +12,7 @@ urlpatterns = []
 # Note:
 #   - Not all endpoints are needed, just wanted to show an example of HATEOAS here, so I duplicated the users and pets
 #     endpoints to show an example of how they would look with a maybe very simple and very improvable HATEOAS approach
+#   - The pets-by-owner endpoint can also be queried by querying the pet endpoint with a query parameter of person_id
 
 users_pets_api_endpoint_views = [
     path(
@@ -23,16 +24,6 @@ users_pets_api_endpoint_views = [
         'owner/<int:person_id>/<int:pet_id>/',
         OwnerAPIView.as_view(),
         name="owner-resource-by-person-id-and-pet-id-with-slash"
-    ),
-    path(
-        'owner/<int:person_id>',
-        PetOwnerAPIView.as_view(),
-        name="owner-resource-by-person-id-without-slash"
-    ),
-    path(
-        'owner/<int:person_id>/',
-        PetOwnerAPIView.as_view(),
-        name="owner-resource-by-person-id-with-slash"
     ),
     path(
         'owner/',
@@ -98,6 +89,16 @@ users_pets_api_endpoint_views = [
         'hyperlinked-pet/',
         HyperlinkedPetAPIView.as_view(),
         name="hyperlinked-pet-resource"
+    ),
+    path(
+        'pet-by-owner/<int:person_id>',
+        PetOwnerAPIView.as_view(),
+        name="pets-by-owner-resource-by-person-id-without-slash"
+    ),
+    path(
+        'pet-by-owner/<int:person_id>/',
+        PetOwnerAPIView.as_view(),
+        name="pets-by-owner-resource-by-person-id-with-slash"
     )
 ]
 

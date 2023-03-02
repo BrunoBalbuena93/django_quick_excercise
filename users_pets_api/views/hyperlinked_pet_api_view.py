@@ -28,18 +28,28 @@ class HyperlinkedPetAPIView (APIView):
     def get (self, request, id = None, *args, **kwargs):
 
         if id is None:
-            pet_data = Pet.pets.get_all()
-            pet_serialized_data = HyperlinkedPetSerializer(
-                pet_data,
-                many=True,
-                context={"request": request}
-            )
-            return Response(pet_serialized_data.data)
+
+            if 'person_id' in request.query_params:
+                pet_data = Pet.pets.get_by_person_id(request.query_params['person_id'])
+            else:
+                pet_data = Pet.pets.get_all()
+
+            if pet_data.exists():
+                pet_serialized_data = HyperlinkedPetSerializer(
+                    pet_data,
+                    many=True,
+                    context={"request": request}
+                )
+                return Response(pet_serialized_data.data)
+
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
 
         pet_data = Pet.pets.get_by_id(id)
+        if 'person_id' in request.query_params:
+            pet_data = pet_data.get_by_person_id(request.query_params['person_id'])
 
         if pet_data.exists():
-
             pet_serialized_data = HyperlinkedPetSerializer(
                 pet_data.get(),
                 many=False,
