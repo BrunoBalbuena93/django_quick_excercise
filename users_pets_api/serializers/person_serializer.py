@@ -14,8 +14,13 @@ class PersonSerializer(serializers.ModelSerializer):
         #    shown or accepted for the serializer. In case there is a functionality needed to manipulate information
         #    from these fields there are better login related options from the framework which are more secure than
         #    the API endpoint that would be exposed with this serializer (Even some parameters I include for this
-        #    exercise may be deemed as insecure to show, such as the id, username, first and last names ... and could
-        #    be needed to be deleted in order to avoid security attacks)
+        #    exercise may be deemed as insecure to show, such as the id, username, first and last names ... could be
+        #    needed to be deleted in order to avoid security attacks)
+        #  - This means a user created using this serializer will not have a password and will not be able to log in
+        #    to the django admin panel. If this behavior is intended it would be needed to be changed here, adding the
+        #    user registration fields (for instance the password) to the serializer and managing its data types
+        #    correctly (for example using instance.set_password(...) where instance = self.Meta.model to hash password
+        #    data correctly before saving it)
         fields = [
             'id',
             'username',
@@ -33,7 +38,6 @@ class PersonSerializer(serializers.ModelSerializer):
         #     wanted to show an example of read_only_fields here
         read_only_fields = [
             'id',
-            'username',
             'date_joined'
         ]
 

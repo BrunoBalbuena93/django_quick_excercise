@@ -1,3 +1,5 @@
+import datetime
+
 from rest_framework.views import APIView
 
 from rest_framework.response import Response
@@ -49,3 +51,131 @@ class HyperlinkedPersonAPIView (APIView):
 
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+    @method_decorator(csrf_exempt)
+    def post(self, request, *args, **kwargs):
+
+        person_request_data = request.data
+
+        person_serialized_data = HyperlinkedPersonSerializer(
+            data=person_request_data,
+            context={"request" : request}
+        )
+        person_serialized_data.date_joined = datetime.datetime.utcnow()
+
+        if person_serialized_data.is_valid ():
+
+            person_serialized_data.save()
+            return Response (
+                person_serialized_data.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response (
+            person_serialized_data.errors,
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def put(self, request, id = None, *args, **kwargs):
+
+        person_request_data = request.data
+
+        if not(id is None):
+
+            person_data = Person.people.get_by_id(id)
+
+            if person_data.exists():
+
+                person_serialized_data = HyperlinkedPersonSerializer(
+                    person_data.get(),
+                    data=person_request_data,
+                    context={"request" : request}
+                )
+
+                if person_serialized_data.is_valid ():
+
+                    person_serialized_data.save()
+                    return Response (person_serialized_data.data)
+
+                return Response(
+                    person_serialized_data.errors,
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'An update request must include the id parameter as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def patch(self, request, id = None, *args, **kwargs):
+
+        person_request_data = request.data
+
+        if not(id is None):
+
+            person_data = Person.people.get_by_id(id)
+
+            if person_data.exists():
+
+                person_data = person_data.get()
+
+                # Note:
+                #   - I could have done this in the update method of the serializer. I just wanted to implement it here
+                #     to show a difference between the patch and put requests
+
+                if not ('username' in person_request_data):
+                    person_request_data['username'] = person_data.username
+
+                if not ('phone_number' in person_request_data):
+                    person_request_data['phone_number'] = person_data.phone_number.as_e164
+
+                if not ('city' in person_request_data):
+                    person_request_data['city'] = person_data.city
+
+                print (person_request_data)
+
+                person_serialized_data = HyperlinkedPersonSerializer(
+                    person_data,
+                    data=person_request_data,
+                    context={"request" : request}
+                )
+
+                if person_serialized_data.is_valid ():
+
+                    person_serialized_data.save()
+                    return Response (person_serialized_data.data)
+
+                return Response(
+                    person_serialized_data.errors,
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'An update request must include the id parameter as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )
+
+    @method_decorator(csrf_exempt)
+    def delete(self, request, id = None, *args, **kwargs):
+
+        if not(id is None):
+
+            person_data = Person.people.get_by_id(id)
+
+            if person_data.exists():
+                person_data.delete()
+                return Response (status=status.HTTP_204_NO_CONTENT)
+
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response (
+            'A delete request must include the id parameter as part of the URL',
+            status = status.HTTP_400_BAD_REQUEST
+        )

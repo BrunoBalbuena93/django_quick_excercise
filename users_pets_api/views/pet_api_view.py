@@ -114,8 +114,26 @@ class PetAPIView (APIView):
 
             if pet_data.exists():
 
+                pet_data = pet_data.get()
+
+                # Note:
+                #   - I could have done this in the update method of the serializer. I just wanted to implement it here
+                #     to show a difference between the patch and put requests
+
+                if not ('breed' in pet_request_data):
+                    pet_request_data['breed'] = pet_data.breed
+
+                if not ('date_of_birth' in pet_request_data):
+                    pet_request_data['date_of_birth'] = pet_data.date_of_birth
+
+                if not ('gender' in pet_request_data):
+                    pet_request_data['gender'] = pet_data.gender
+
+                if not ('weight' in pet_request_data):
+                    pet_request_data['weight'] = pet_data.weight
+
                 pet_serialized_data = PetSerializer(
-                    pet_data.get(),
+                    pet_data,
                     data=pet_request_data,
                     context={"request" : request}
                 )
