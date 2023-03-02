@@ -1,5 +1,6 @@
 from django.db import models as models
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 
 from users_pets_api.managers import PetManager
 
@@ -71,6 +72,34 @@ class Pet(models.Model):
     )
 
     pets = PetManager()
+
+    def calculate_age(self):
+        date_to_calculate_age = timezone.now()
+
+        if not(self.deceased_date is None):
+            date_to_calculate_age = self.deceased_date
+
+        return date_to_calculate_age - self.date_of_birth
+
+    @property
+    def age_seconds(self):
+        return self.calculate_age().total_seconds()
+
+    @property
+    def age_minutes(self):
+        return self.age_seconds / 60.0
+
+    @property
+    def age_hours(self):
+        return self.age_minutes / 60.0
+
+    @property
+    def age_days(self):
+        return self.age_hours / 24.0
+
+    @property
+    def age_years(self):
+        return self.age_days / 365.25
 
     class Meta:
         app_label = 'users_pets_api'
