@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
     'rest_framework_simplejwt',
-    'users_pets_api',
+    'oauth2_provider',
+    'dot_restrict_scopes',
+    'users_pets_api'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +75,8 @@ DATABASE_ROUTERS = [
     'django_app.routers.AuthProviderRouter',
     'django_app.routers.ContentTypesProviderRouter',
     'django_app.routers.SessionsProviderRouter',
+    'django_app.routers.OAuth2DOTProviderRouter',
+    'django_app.routers.OAuth2DOTRestrictScopesProviderRouter',
     'users_pets_api.routers.UsersPetsAPIProviderRouter'
 ]
 
@@ -116,3 +120,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# OAuth2 Provider Settings
+
+OAUTH2_PROVIDER_APPLICATION_MODEL = 'dot_restrict_scopes.RestrictedApplication'
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read-all': 'Read all data',
+        'create-all': 'Create all data',
+        'update-all': 'Update all data',
+        'delete-all': 'Delete all data',
+        'read-not-sensitive': 'Read only not sensitive data',
+        'create-not-sensitive': 'Create not sensitive data',
+        'update-not-sensitive': 'Update not sensitive data',
+        'delete-not-sensitive': 'Delete not sensitive data'
+    },
+    'DEFAULT_SCOPES': [
+        'read-not-sensitive'
+    ],
+    'SCOPES_BACKEND_CLASS': 'dot_restrict_scopes.scopes.RestrictApplicationScopes',
+    'ACCESS_TOKEN_EXPIRE_SECONDS' : 36000
+}
+
+DOT_RESTRICT_SCOPES = {
+    'WRAPPED_SCOPES_BACKEND_CLASS': 'oauth2_provider.scopes.SettingsScopes',
+}

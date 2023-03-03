@@ -59,6 +59,10 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "leiatennissta
 # No permission
 curl -X POST -H "Content-Type: application/json" -d '{"username": "pigeongrapecamelnet", "password": "password"}' http://localhost:42800/api-v0-jwt/token/
 
+# DOT Application permissions
+curl -X POST  -d 'grant_type=password' -d 'client_id=Ba0HFa3jm4u4R6PKVFUKjqnE9QkR2vMmGIj89hIB' -d 'client_secret=HVSFufYLHd775mdiANZ5KwRK2PFwEhNHMWsa4QZ57kPLLiGcTPVyQflnS9vvoaY44GD6AE3o7tnIknL8VfUtbq5ZvFbi2WRjzaqlxOs7taXVCtVS4jnfNJCkkDutjNr9' -d 'username=pigeongrapecamelnet' -d 'password=password' -d 'scope=read-all' http://localhost:42800/api-v0-dot/token/
+curl -X POST  -d 'grant_type=password' -d 'client_id=Ba0HFa3jm4u4R6PKVFUKjqnE9QkR2vMmGIj89hIB' -d 'client_secret=HVSFufYLHd775mdiANZ5KwRK2PFwEhNHMWsa4QZ57kPLLiGcTPVyQflnS9vvoaY44GD6AE3o7tnIknL8VfUtbq5ZvFbi2WRjzaqlxOs7taXVCtVS4jnfNJCkkDutjNr9' -d 'username=pigeongrapecamelnet' -d 'password=password' -d 'scope=create-all' http://localhost:42800/api-v0-dot/token/
+curl -X POST  -d 'grant_type=password' -d 'client_id=Ba0HFa3jm4u4R6PKVFUKjqnE9QkR2vMmGIj89hIB' -d 'client_secret=HVSFufYLHd775mdiANZ5KwRK2PFwEhNHMWsa4QZ57kPLLiGcTPVyQflnS9vvoaY44GD6AE3o7tnIknL8VfUtbq5ZvFbi2WRjzaqlxOs7taXVCtVS4jnfNJCkkDutjNr9' -d 'username=pigeongrapecamelnet' -d 'password=password' -d 'scope=read-not-sensitive' http://localhost:42800/api-v0-dot/token/
 
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/owner/
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/owner/
@@ -78,3 +82,14 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
+curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
+curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/

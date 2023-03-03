@@ -6,8 +6,8 @@ from rest_framework import status
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-# from oauth2_provider.contrib.rest_framework import OAuth2Authentication
-# from oauth2_provider.contrib.rest_framework import TokenHasScope
+from oauth2_provider.contrib.rest_framework import OAuth2Authentication
+from oauth2_provider.contrib.rest_framework import TokenMatchesOASRequirements
 
 from users_pets_api.models import Pet
 
@@ -20,9 +20,23 @@ from users_pets_api.serializers import HyperlinkedPetSerializer
 
 class HyperlinkedPetAPIView (APIView):
 
-#    authentication_classes = [OAuth2Authentication]
-#    permission_classes     = [TokenHasScope]
-#    required_scopes        = ['']
+    # Note:
+    #   - I could have used a setting from django rest framework to set up the authentication classes and permissions
+    #     directly, but I used the authentication_classes, permission_classes, required_scopes and permission map
+    #     fields to show an exercise using a simple JWT approach and a simple Token OAuth2 authentication (and how
+    #     they can be used together from the implementation). In a real world example only one authentication and
+    #     authorization method should be used (and might need to be configured in a more detailed way, for instance
+    #     with a configuration based on cryptography keys and introspection endpoints, to try to avoid security issues).
+
+    authentication_classes = [OAuth2Authentication]
+    permission_classes = [TokenMatchesOASRequirements]
+    required_alternate_scopes = {
+        'GET': [['read-all'], ['read-not-sensitive']],
+        'POST': [['create-all'], ['create-not-sensitive']],
+        'PUT': [['update-all'], ['update-not-sensitive']],
+        'PATCH': [['update-all'], ['update-not-sensitive']],
+        'DELETE': [['delete-all'], ['delete-not-sensitive']]
+    }
 
     @method_decorator(csrf_exempt)
     def get (self, request, id = None, *args, **kwargs):
