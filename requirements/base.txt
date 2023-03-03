@@ -1,5 +1,8 @@
 # Base Project Requirements
 django==4.1.7
 
+# Some authentication / authorization libraries to use as an exercise (Normally only one is used)
+djangorestframework-simplejwt==5.2.2
+
 # Users/Pets API Application Requirements
 -r users_pets_api.txt

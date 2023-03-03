@@ -1,0 +1,130 @@
+[
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 1,
+      "person_id": 1,
+      "group_id": 1
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 2,
+      "person_id": 1,
+      "group_id": 2
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 3,
+      "person_id": 1,
+      "group_id": 3
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 4,
+      "person_id": 1,
+      "group_id": 4
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 5,
+      "person_id": 2,
+      "group_id": 5
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 6,
+      "person_id": 2,
+      "group_id": 6
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 7,
+      "person_id": 2,
+      "group_id": 7
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 8,
+      "person_id": 2,
+      "group_id": 8
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 9,
+      "person_id": 3,
+      "group_id": 1
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 10,
+      "person_id": 4,
+      "group_id": 2
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 11,
+      "person_id": 5,
+      "group_id": 3
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 12,
+      "person_id": 6,
+      "group_id": 4
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 13,
+      "person_id": 7,
+      "group_id": 5
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 14,
+      "person_id": 8,
+      "group_id": 6
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 15,
+      "person_id": 9,
+      "group_id": 7
+    }
+  },
+  {
+    "model": "users_pets_api.person_groups",
+    "fields": {
+      "id": 16,
+      "person_id": 3,
+      "group_id": 8
+    }
+  }
+]

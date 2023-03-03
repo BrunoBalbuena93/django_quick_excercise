@@ -1,0 +1,1 @@
+from .django_app_base_resource_permission import DjangoAppBaseResourcePermission
