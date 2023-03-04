@@ -14,8 +14,9 @@ class UserPetsApiConfig(AppConfig):
     name = 'users_pets_api'
 
     def ready(self):
-#        person_model = self.get_model('Person')
-#        post_save.connect(delete_old_person_images, sender=person_model)
+        person_model = self.get_model('Person')
+        post_delete.connect(delete_person_images_path, sender=person_model)
+        post_save.connect(delete_old_person_images, sender=person_model)
 
         pet_model = self.get_model('Pet')
         post_delete.connect(delete_pet_images_path, sender=pet_model)

@@ -2,6 +2,7 @@ from django.db import models as models
 from django.contrib.auth.models import AbstractUser, UserManager
 
 from phonenumber_field.modelfields import PhoneNumberField
+from users_pets_api.utils import get_person_image_upload_path
 
 from users_pets_api.managers import PersonManager
 
@@ -31,6 +32,11 @@ class Person(AbstractUser):
         blank=False,
         null=False,
         unique=False
+    )
+    person_image = models.ImageField(
+        upload_to=get_person_image_upload_path,
+        blank=True,
+        null=True
     )
 
     objects = UserManager()

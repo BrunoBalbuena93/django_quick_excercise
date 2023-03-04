@@ -31,7 +31,8 @@ class HyperlinkedPersonSerializer(serializers.HyperlinkedModelSerializer):
             'phone_number',
             'city',
             'last_login',
-            'pets'
+            'pets',
+            'person_image'
         ]
 
         # Note:

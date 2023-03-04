@@ -30,7 +30,8 @@ class PersonSerializer(serializers.ModelSerializer):
             'date_joined',
             'phone_number',
             'city',
-            'last_login'
+            'last_login',
+            'person_image'
         ]
 
         # Note:

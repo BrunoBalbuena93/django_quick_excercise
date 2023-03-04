@@ -115,11 +115,6 @@ class Pet(models.Model):
     def age_years(self):
         return self.age_days / 365.25
 
-    @property
-    def pet_image_url(self):
-        return f"{self.pet_image}"
-#        return f"{settings.APP_DOMAIN}{self.pet_image}"
-
     class Meta:
         app_label = 'users_pets_api'
         db_table = 'pet'

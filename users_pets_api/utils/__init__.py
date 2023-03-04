@@ -1,1 +1,1 @@
-from .path_utils import get_pet_image_upload_path
+from .path_utils import get_person_image_upload_path, get_pet_image_upload_path

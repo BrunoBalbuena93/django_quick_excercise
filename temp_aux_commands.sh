@@ -83,7 +83,6 @@ curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " ht
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 
 curl -X POST -F date_of_birth="2023-03-02 02:10:00Z" -F chip_number="1111" -F gender="F" -F weight=47.89 -F breed="Pomeranian" -F pet_image=@"/home/jctrujillo/Downloads/dog-1.jpg" http://localhost:42800/api-v0/pet/
-
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 
@@ -92,6 +91,9 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " htt
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
+
+
+curl -X POST  http://localhost:42800/api-v0/hyperlinked-person/ -F id=5 -F username="forrestgumpsavannah" -F first_name="Savannah 1" -F last_name="Harrison 2" -F email="forrestgumpsavannah@yahoo.com" -F date_joined="2023-02-01T00:00:00Z" -F phone_number="+573333014786" -F city="Cali" -F person_image=@"/home/jctrujillo/Downloads/dog-1.jpg"
 
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
