@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator
 from django.utils import timezone
 
 from users_pets_api.managers import PetManager
+from users_pets_api.utils import get_pet_image_upload_path
 
 from .person import Person
 
@@ -25,6 +26,14 @@ class Pet(models.Model):
         unique=True,
         editable=False,
         primary_key=True
+    )
+    chip_number = models.CharField(
+        db_column='chip_number',
+        max_length=50,
+        blank=False,
+        null=False,
+        unique=True,
+        default='1111-2222-3333-4444'
     )
     date_of_birth = models.DateTimeField(
         db_column='date_of_birth',
@@ -65,6 +74,11 @@ class Pet(models.Model):
         null=True,
         unique=False
     )
+    pet_image = models.ImageField(
+        upload_to=get_pet_image_upload_path,
+        blank=True,
+        null=True
+    )
     owners = models.ManyToManyField(
         Person,
         related_name='pets',
@@ -100,6 +114,11 @@ class Pet(models.Model):
     @property
     def age_years(self):
         return self.age_days / 365.25
+
+    @property
+    def pet_image_url(self):
+        return f"{self.pet_image}"
+#        return f"{settings.APP_DOMAIN}{self.pet_image}"
 
     class Meta:
         app_label = 'users_pets_api'

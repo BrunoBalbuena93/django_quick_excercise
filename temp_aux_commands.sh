@@ -82,6 +82,11 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
 
+curl -X POST -F date_of_birth="2023-03-02 02:10:00Z" -F chip_number="1111" -F gender="F" -F weight=47.89 -F breed="Pomeranian" -F pet_image=@"/home/jctrujillo/Downloads/dog-1.jpg" http://localhost:42800/api-v0/pet/
+
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
+curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/pet/
+
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-person/
@@ -93,3 +98,5 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer " htt
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
 curl -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
 curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer " http://localhost:42800/api-v0/hyperlinked-pet/
+
+

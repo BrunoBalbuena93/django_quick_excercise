@@ -3,6 +3,8 @@ from django.conf import settings
 from django.urls import include, path, re_path
 from django.contrib import admin
 
+from django.views.static import serve
+
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -15,6 +17,17 @@ urlpatterns = []
 if settings.DEBUG:
     urlpatterns += [
         re_path (r'^admin/', admin.site.urls),
+    ]
+
+    urlpatterns += [
+        re_path(
+            r'^app-media/(?P<path>.*)$',
+            serve,
+            {
+                'document_root': settings.MEDIA_ROOT
+            },
+            name='media-files'
+        )
     ]
 
 urlpatterns += [

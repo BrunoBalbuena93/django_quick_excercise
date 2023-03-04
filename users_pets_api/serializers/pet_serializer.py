@@ -22,13 +22,14 @@ class PetSerializer(serializers.ModelSerializer):
 
         fields = [
             'id',
+            'chip_number',
             'date_of_birth',
             'gender',
             'weight',
             'breed',
             'deceased_date',
             'age',
-            'age_minutes'
+            'pet_image'
         ]
 
         # Note:

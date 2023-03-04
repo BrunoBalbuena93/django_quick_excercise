@@ -22,13 +22,15 @@ class HyperlinkedPetSerializer(serializers.HyperlinkedModelSerializer):
 
         fields = [
             'id',
+            'chip_number',
             'date_of_birth',
             'gender',
             'weight',
             'breed',
             'deceased_date',
             'owners',
-            'age'
+            'age',
+            'pet_image'
         ]
 
         # Note:

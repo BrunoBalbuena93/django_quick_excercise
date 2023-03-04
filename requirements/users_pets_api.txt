@@ -3,3 +3,4 @@ markdown==3.4.1
 django-filter==22.1
 pygments==2.14.0
 django-phonenumber-field[phonenumbers]==7.0.2
+Pillow==9.4.0

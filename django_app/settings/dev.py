@@ -22,6 +22,15 @@ CACHES = {
      }
 }
 
+# Media configuration
+
+MEDIA_ROOT_NAME = "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_ROOT_NAME)
+MEDIA_URL = f"app-{MEDIA_ROOT_NAME}/"
+PET_IMAGES_MEDIA_BASE = 'pet-images'
+PERSON_IMAGES_MEDIA_BASE = 'pet-images'
+BASE_APPLICATION_DOMAIN = '/12345/'
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

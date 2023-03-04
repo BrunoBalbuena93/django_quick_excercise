@@ -6,6 +6,8 @@ from rest_framework import status
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
+from rest_framework.parsers import MultiPartParser, FormParser
+
 from oauth2_provider.contrib.rest_framework import OAuth2Authentication
 from oauth2_provider.contrib.rest_framework import TokenMatchesOASRequirements
 
@@ -37,6 +39,7 @@ class HyperlinkedPetAPIView (APIView):
         'PATCH': [['update-all'], ['update-not-sensitive']],
         'DELETE': [['delete-all'], ['delete-not-sensitive']]
     }
+    parser_classes = [MultiPartParser, FormParser]
 
     @method_decorator(csrf_exempt)
     def get (self, request, id = None, *args, **kwargs):

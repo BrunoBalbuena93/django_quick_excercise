@@ -6,6 +6,8 @@ from rest_framework import status
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
+from rest_framework.parsers import MultiPartParser, FormParser
+
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -30,6 +32,7 @@ class PetAPIView (APIView):
     permission_classes = [IsAuthenticated, DjangoAppBaseResourcePermission]
     app_label = 'users_pets_api'
     resource_name = 'pet'
+    parser_classes = [MultiPartParser, FormParser]
 
     @method_decorator(csrf_exempt)
     def get(self, request, id = None, *args, **kwargs):
