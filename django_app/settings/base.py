@@ -15,19 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '3z&-v^f1+30_ms1oup&5m!!em81vc$kjd%m7z=^j%2xuxu=mv0'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +24,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'phonenumber_field',
+    'rest_framework_simplejwt',
+    'oauth2_provider',
+    'dot_restrict_scopes',
+    'users_pets_api'
 ]
 
 MIDDLEWARE = [
@@ -69,17 +62,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_app.wsgi.application'
 
+# Note:
+#   This is an example of how multiple applications could go to multiple databases. Since this is a simple example
+#   when the default django user's entity / model / table is used also as a foreign key for part of the exercise all
+#   the routers go to the same database (users_pets_api) and we don't get any benefit from separating data in multiple
+#   routers since we would lose the availability of foreign keys reference to the user model risking the integrity of
+#   data of the pet owners entity information. I just leave it here as an example of how we can use routers to separate
+#   data from multiple applications
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+DATABASE_ROUTERS = [
+    'django_app.routers.AdminProviderRouter',
+    'django_app.routers.AuthProviderRouter',
+    'django_app.routers.ContentTypesProviderRouter',
+    'django_app.routers.SessionsProviderRouter',
+    'django_app.routers.OAuth2DOTProviderRouter',
+    'django_app.routers.OAuth2DOTRestrictScopesProviderRouter',
+    'users_pets_api.routers.UsersPetsAPIProviderRouter'
+]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+# User Model (Adding additional exercise fields)
+AUTH_USER_MODEL = 'users_pets_api.Person'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -118,3 +120,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# OAuth2 Provider Settings
+
+OAUTH2_PROVIDER_APPLICATION_MODEL = 'dot_restrict_scopes.RestrictedApplication'
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read-all': 'Read all data',
+        'create-all': 'Create all data',
+        'update-all': 'Update all data',
+        'delete-all': 'Delete all data',
+        'read-not-sensitive': 'Read only not sensitive data',
+        'create-not-sensitive': 'Create not sensitive data',
+        'update-not-sensitive': 'Update not sensitive data',
+        'delete-not-sensitive': 'Delete not sensitive data'
+    },
+    'DEFAULT_SCOPES': [
+        'read-not-sensitive'
+    ],
+    'SCOPES_BACKEND_CLASS': 'dot_restrict_scopes.scopes.RestrictApplicationScopes',
+    'ACCESS_TOKEN_EXPIRE_SECONDS' : 36000
+}
+
+DOT_RESTRICT_SCOPES = {
+    'WRAPPED_SCOPES_BACKEND_CLASS': 'oauth2_provider.scopes.SettingsScopes',
+}

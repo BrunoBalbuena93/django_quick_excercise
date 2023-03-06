@@ -1,21 +1,80 @@
-"""django_app URL Configuration
+from django.conf import settings
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
-from django.conf.urls import url
+from django.urls import include, path, re_path
 from django.contrib import admin
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+from django.views.static import serve
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+from oauth2_provider import views as oauth2_views
+
+urlpatterns = []
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path (r'^admin/', admin.site.urls),
+    ]
+
+    urlpatterns += [
+        re_path(
+            r'^app-media/(?P<path>.*)$',
+            serve,
+            {
+                'document_root': settings.MEDIA_ROOT
+            },
+            name='media-files'
+        )
+    ]
+
+urlpatterns += [
+    path(
+        'api-v0-jwt/token/',
+        TokenObtainPairView.as_view(),
+        name='jwt-token-obtain-pair'
+    ),
+    path(
+        'api-v0-jwt/token/refresh/',
+        TokenRefreshView.as_view(),
+        name='jwt-token-refresh'
+    )
+]
+
+urlpatterns += [
+    path (
+        'api-v0-dot/authorize/',
+        oauth2_views.AuthorizationView.as_view (),
+        name = "authorize"
+    ),
+    path (
+        'api-v0-dot/token/',
+        oauth2_views.TokenView.as_view (),
+        name = "token"
+    ),
+    path (
+        'api-v0-dot/revoke-token/',
+        oauth2_views.RevokeTokenView.as_view (),
+        name = "revoke-token"
+    ),
+    path (
+        'api-v0-dot/introspect/',
+        oauth2_views.IntrospectTokenView.as_view (),
+        name = "instrospect"
+    )
+]
+
+urlpatterns += [
+    re_path (
+        r'^api-v0/',
+        include (
+            (
+                'users_pets_api.urls',
+                'users_pets_api'
+            ),
+            namespace = 'users_pets_api'
+        )
+    )
 ]

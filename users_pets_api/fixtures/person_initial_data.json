@@ -1,0 +1,172 @@
+[
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 1,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "leafpetrichorwebrye",
+      "first_name": "Leticia",
+      "last_name": "Curtridge",
+      "email": "leafpetrichorwebrye@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15056464326",
+      "city": "Valledupar"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 2,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "volleyballanniehall",
+      "first_name": "Annie",
+      "last_name": "Hall",
+      "email": "volleyballanniehall@yahoo.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15056869830",
+      "city": "Valledupar"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 3,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "orangejuicedrumpig",
+      "first_name": "Mad Dog",
+      "last_name": "Smith",
+      "email": "orangejuicedrumpig@hotmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15056466779",
+      "city": "Villavicencio"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 4,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "crocodilefloraseaice",
+      "first_name": "Charles",
+      "last_name": "De Gaule",
+      "email": "crocodilefloraseaice@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+13155717884",
+      "city": "Villavicencio"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 5,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "moderntimesicecream",
+      "first_name": "Marissa",
+      "last_name": "Bay",
+      "email": "moderntimesicecream@yahoo.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15056731650",
+      "city": "Cali"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 6,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "winevenuspeacefullog",
+      "first_name": "Walter",
+      "last_name": "Fullestein",
+      "email": "winevenuspeacefullog@hotmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+12033904373",
+      "city": "Cali"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 7,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "beetmarramgloveegg",
+      "first_name": "Bettany",
+      "last_name": "Lourdries",
+      "email": "beetmarramgloveegg@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15056463228",
+      "city": "Bogotá"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 8,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "icehamstersnowstorm",
+      "first_name": "Ice C",
+      "last_name": "Jacobs",
+      "email": "icehamstersnowstorm@yahoo.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+12184654734",
+      "city": "Bogotá"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 9,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "leiatennisstardust",
+      "first_name": "Leia",
+      "last_name": "Stardust",
+      "email": "leiatennisstardust@hotmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+12397995224",
+      "city": "Medellín"
+    }
+  },
+  {
+    "model": "users_pets_api.person",
+    "fields": {
+      "id": 10,
+      "password": "pbkdf2_sha256$390000$1Eyrl9II8iTAiWX44jJ0bZ$viFueQw4nb9b346B4V7ZpN2H3og8odfzRlxpRUOAOvQ=",
+      "is_superuser": false,
+      "username": "pigeongrapecamelnet",
+      "first_name": "Paul",
+      "last_name": "Pigeon",
+      "email": "pigeongrapecamelnet@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-01-01 00:00:00Z",
+      "phone_number": "+15084316619",
+      "city": "Medellín"
+    }
+  }
+]
